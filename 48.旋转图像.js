@@ -16,7 +16,7 @@ var rotate = function (matrix) {
   let n = matrix.length,
     m = Math.floor(n / 2)
 
-  // 转置，第 i 行的 [i ,i] 位置开始，做[i ,j] => [j, i]操作
+  // 转置，第 i 行的 [i , j] 位置开始，做[i ,j] => [j, i]操作
   for (let i = 0; i < n; i++) {
     for (let j = i + 1; j < n; j++) {
       ;[matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]]
