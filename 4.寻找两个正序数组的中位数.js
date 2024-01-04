@@ -29,36 +29,25 @@ var findMedianSortedArrays = function (nums1, nums2) {
 
   // 第 k 小数 （k 即中位数）
   let k = Math.ceil((nums1.length + nums2.length) / 2),
-    len = nums1.length + nums2.length
-  let midNum = 0
+    len = nums1.length + nums2.length,
+    midNum = 0
   while (k) {
     let floor = Math.floor(k / 2)
     if (k == 1) {
       if (len % 2) {
         // 奇数个
-        midNum = nums1.length
-          ? nums2.length
-            ? Math.min(nums1[0], nums2[0])
-            : nums1[0]
-          : nums2[0]
+        const arr = [nums1[0], nums2[0]].filter((v) => !isNaN(v))
+
+        midNum = Math.min(...arr)
       } else {
         // 偶数个
-        console.log('偶数，', (nums1[0] + nums2[0]) / 2)
-        midNum = nums1.length
-          ? nums2.length
-            ? nums1[1] != undefined
-              ? nums2[1] != undefined
-                ? Math.min(
-                    nums1[0] + nums1[1],
-                    nums1[0] + nums2[0],
-                    nums2[0] + nums2[1]
-                  ) / 2
-                : Math.min(nums1[0] + nums1[1], nums1[0] + nums2[0]) / 2
-              : nums2[1] != undefined
-              ? Math.min(nums2[0] + nums2[1], nums1[0] + nums2[0]) / 2
-              : (nums1[0] + nums2[0]) / 2
-            : (nums1[0] + nums1[1]) / 2
-          : (nums2[0] + nums2[1]) / 2
+        const arr = [
+          nums1[0] + nums1[1],
+          nums1[0] + nums2[0],
+          nums2[0] + nums2[1]
+        ].filter((v) => !isNaN(v))
+
+        midNum = Math.min(...arr) / 2
       }
       // 结束
       break
