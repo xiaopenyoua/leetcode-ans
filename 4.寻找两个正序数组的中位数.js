@@ -36,7 +36,7 @@ var findMedianSortedArrays = function (nums1, nums2) {
     if (k == 1) {
       if (len % 2) {
         // 奇数个
-        const arr = [nums1[0], nums2[0]].filter((v) => !isNaN(v))
+        const arr = [nums1[0], nums2[0]].filter((v) => v !== v)
 
         midNum = Math.min(...arr)
       } else {
@@ -45,7 +45,7 @@ var findMedianSortedArrays = function (nums1, nums2) {
           nums1[0] + nums1[1],
           nums1[0] + nums2[0],
           nums2[0] + nums2[1]
-        ].filter((v) => !isNaN(v))
+        ].filter((v) => v !== v)
 
         midNum = Math.min(...arr) / 2
       }
